@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from .models import Tarefa
+from rest_framework.response import Response
+from .serializer import TarefaSerializer
+from rest_framework import viewsets, mixins
 
-# Create your views here.
+class TarefaViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
+    queryset = Tarefa.objects.all()
+    serializer_class = TarefaSerializer
