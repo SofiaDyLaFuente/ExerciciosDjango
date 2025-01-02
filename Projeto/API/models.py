@@ -14,13 +14,19 @@ class Tarefa(Base):
         ("M", "Média"),
         ("B", "Baixa")
     )
+
+    colunas = (
+        ("0", "Para fazer"),
+        ("1", "Em progresso"),
+        ("2", "Concluída")
+    )
     
     titulo = models.CharField(max_length = 500, null = False, blank = False)
     data_criacao = models.DateTimeField(auto_now_add = True)
     data_conclusao = models.DateField(null = True, blank = True)
     descricao = models.TextField(max_length=1000, blank = True)
     prioridade = models.CharField(max_length=1, choices= escolhas, blank = True)
-    #tipo = 
+    tipo = models.CharField(max_length = 1, choices= colunas, blank = True)
 
     class Meta:
         verbose_name = 'Tarefa'

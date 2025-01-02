@@ -4,8 +4,3 @@ from .views import TarefaViewSet
 
 router = SimpleRouter()
 router.register('tarefa', TarefaViewSet)
-
-#Rotas locais
-#urlpatterns = [
-#    path('tarefa/')
-#]

@@ -10,9 +10,10 @@ class TarefaSerializer(serializers.ModelSerializer):
     model = Tarefa
     
     fields = (
+            'tipo',
             'titulo',
             'data_criacao',
             'data_conclusao',
             'descricao',
-            'prioridade'      
+            'prioridade',   
     )

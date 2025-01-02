@@ -7,3 +7,4 @@ from rest_framework import viewsets, mixins
 class TarefaViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
     queryset = Tarefa.objects.all()
     serializer_class = TarefaSerializer
+
