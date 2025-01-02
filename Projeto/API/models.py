@@ -10,16 +10,16 @@ class Base(models.Model):
 class Tarefa(Base):
 
     escolhas = (
-        ("A", "alta"), 
-        ("M", "média"),
-        ("B", "baixa")
+        ("A", "Alta"), 
+        ("M", "Média"),
+        ("B", "Baixa")
     )
     
     titulo = models.CharField(max_length = 500, null = False, blank = False)
     data_criacao = models.DateTimeField(auto_now_add = True)
-    data_conclusao = models.DateTimeField()
-    descricao = models.TextField(max_length=1000)
-    prioridade = models.CharField(max_length=1, choices= escolhas)
+    data_conclusao = models.DateField(null = True, blank = True)
+    descricao = models.TextField(max_length=1000, blank = True)
+    prioridade = models.CharField(max_length=1, choices= escolhas, blank = True)
     #tipo = 
 
     class Meta:
