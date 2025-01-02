@@ -8,3 +8,16 @@ class TarefaViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.U
     queryset = Tarefa.objects.all()
     serializer_class = TarefaSerializer
 
+
+
+'''
+from django.shortcuts import render
+from .models import Tarefa
+from .serializer import TarefaSerializer
+import requests
+
+def TarefaViewSet(requests):
+    tarefas = Tarefa.objects.all()  # Obter todas as tarefas
+    return render(requests, 'template.html', {'tarefas': tarefas})
+
+'''
