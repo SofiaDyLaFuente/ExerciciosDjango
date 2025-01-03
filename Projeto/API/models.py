@@ -41,6 +41,12 @@ class Tarefa(Base):
 class Quadro(models.Model):
     nome = models.CharField(max_length = 250)
 
+    class Meta:
+        verbose_name = 'Quadro'
+        verbose_name_plural = 'Quadros'
+        ordering = ['id']
+
+    
     def __str__(self):
         return self.nome
     
@@ -49,5 +55,11 @@ class Lista(models.Model):
     nome = models.CharField(max_length=250)
     quadro = models.ForeignKey(Quadro, on_delete = models.CASCADE, related_name= "Lista")
 
+    class Meta:
+        verbose_name = 'Lista'
+        verbose_name_plural = 'Listas'
+        ordering = ['id']
+
+    
     def __str__(self):
         return self.nome

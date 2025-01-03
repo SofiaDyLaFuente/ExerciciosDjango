@@ -28,25 +28,13 @@ class TarefaSerializer(serializers.ModelSerializer):
 class ListaSerializer(serializers.ModelSerializer):
 
     tarefas = TarefaSerializer(many = True, read_only = True)
-
     model = Lista
-    
-    fields = (
-            'titulo',
-            'nome',
-            'quadro',
-            'tarefas',      
-    )
+    fields = ('nome','quadro','tarefas')
 
 
 class QuadroSerializer(serializers.ModelSerializer):
 
     listas = ListaSerializer(many = True, read_only = True)
-
     model = Quadro
-
-    fields = (
-            'nome',
-            'listas',
-    )
+    fields = ('nome', 'listas')
 
