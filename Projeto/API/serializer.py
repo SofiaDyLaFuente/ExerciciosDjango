@@ -22,9 +22,15 @@ class TarefaSerializer(serializers.ModelSerializer):
         )
 
         def validate_data_conclusao(self, value):
-            if value and value < self.instance.data_criacao.date():
-                raise ValidationError("A data de conclusão não pode ser anterior a data da criação")
-            
+            if value:
+                # Verificar se a data de criação foi fornecida e realizar a comparação
+                data_criacao = self.initial_data.get('data_criacao')  # Pega a data de criação do dado de entrada
+                if not data_criacao:
+                    raise ValidationError("A data de criação é obrigatória.")
+                
+                if value < data_criacao:
+                    raise ValidationError("A data de conclusão não pode ser anterior à data da criação.")
+
             return value
 
 class ListaSerializer(serializers.ModelSerializer):
