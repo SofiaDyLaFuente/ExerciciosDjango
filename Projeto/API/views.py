@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from .serializer import TarefaSerializer, QuadroSerializer, ListaSerializer
 from rest_framework import viewsets, mixins
 
-class TarefaViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
+class TarefaViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin,  mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = Tarefa.objects.all()
     serializer_class = TarefaSerializer
 
