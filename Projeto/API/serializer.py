@@ -39,7 +39,7 @@ class ListaSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Lista
-        fields = ('nome','quadro','tarefas')
+        fields = ('nome','tarefas')
 
 
 class QuadroSerializer(serializers.ModelSerializer):
@@ -49,4 +49,3 @@ class QuadroSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quadro
         fields = ('nome', 'listas')
-
