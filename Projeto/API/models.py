@@ -37,17 +37,17 @@ class Tarefa(Base):
     def __str__(self):
         return self.titulo
     
-
-class Lista(models.Model):
-    nome = models.CharField(max_length=250)
-    quadro = models.ForeignKey(Quadro, on_delete = models.CASCADE, related_name= "Lista")
+    
+class Quadro(models.Model):
+    nome = models.CharField(max_length = 250)
 
     def __str__(self):
         return self.nome
     
 
-class Quadro(models.Model):
-    nome = models.CharField(max_length = 250)
+class Lista(models.Model):
+    nome = models.CharField(max_length=250)
+    quadro = models.ForeignKey(Quadro, on_delete = models.CASCADE, related_name= "Lista")
 
     def __str__(self):
         return self.nome

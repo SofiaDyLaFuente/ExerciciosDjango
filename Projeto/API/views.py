@@ -9,7 +9,7 @@ class TarefaViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.U
     serializer_class = TarefaSerializer
 
 class ListaViewSet(viewsets.ModelViewSet):
-    queryset = Quadro.objects.all()
+    queryset = Lista.objects.all()
     serializer_class = ListaSerializer
 
 

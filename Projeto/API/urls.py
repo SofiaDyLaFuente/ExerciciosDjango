@@ -5,5 +5,5 @@ from .views import TarefaViewSet, QuadroViewSet, ListaViewSet
 router = SimpleRouter()
 router.register('tarefa', TarefaViewSet)
 router.register('lista', ListaViewSet)
-router.register('quadro', QuadroViewSet)
+router.register('quadros', QuadroViewSet)
 
