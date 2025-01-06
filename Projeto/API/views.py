@@ -3,10 +3,13 @@ from .models import Tarefa
 from rest_framework.response import Response
 from .serializer import TarefaSerializer
 from rest_framework import viewsets, mixins
+from django_filters.rest_framework import DjangoFilterBackend
 
 class TarefaViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin,  mixins.ListModelMixin, viewsets.GenericViewSet):
     queryset = Tarefa.objects.all()
     serializer_class = TarefaSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['tipo']
 
     def OrganizarPorTipo(self, request, *args, **kwargs):
         # Agrupar tarefas por tipo
