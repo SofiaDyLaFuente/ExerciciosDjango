@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Tarefa, Quadro, Lista
+from .models import Tarefa
 from rest_framework.exceptions import ValidationError
 
 class TarefaSerializer(serializers.ModelSerializer):
@@ -33,19 +33,3 @@ class TarefaSerializer(serializers.ModelSerializer):
 
             return value
 
-class ListaSerializer(serializers.ModelSerializer):
-
-    tarefas = TarefaSerializer(many = True, read_only = True)
-    
-    class Meta:
-        model = Lista
-        fields = ('nome','tarefas')
-
-
-class QuadroSerializer(serializers.ModelSerializer):
-
-    listas = ListaSerializer(many = True, read_only = True)
-
-    class Meta:
-        model = Quadro
-        fields = ('nome', 'listas')
