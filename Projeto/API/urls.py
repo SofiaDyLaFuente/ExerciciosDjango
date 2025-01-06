@@ -4,5 +4,3 @@ from .views import TarefaViewSet
 
 router = SimpleRouter()
 router.register('tarefa', TarefaViewSet)
-
-
