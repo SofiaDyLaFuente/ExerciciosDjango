@@ -16,19 +16,3 @@ class TarefaSerializer(serializers.ModelSerializer):
             'email': {'write_only': True}
 
         }
-
-#---------
-
-    def create(self, validated_data):
-        tarefa = Tarefa(**validated_data)
-        tarefa.full_clean()  # Chama a validação global antes de salvar
-        tarefa.save()
-        return tarefa
-
-    def update(self, instance, validated_data):
-        for attr, value in validated_data.items():
-            setattr(instance, attr, value)
-        instance.full_clean()  # Chama a validação global antes de atualizar
-        instance.save()
-        return instance
-
