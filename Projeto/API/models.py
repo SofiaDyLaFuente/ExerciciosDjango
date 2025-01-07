@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 class Base(models.Model):
 
@@ -35,6 +36,17 @@ class Tarefa(Base):
         verbose_name_plural = 'Tarefas'
         ordering = ['id']
 
+#-----
+
+    def clean(self):
+        
+        if self.data_conclusao and self.data_criacao and self.data_conclusao < self.data_criacao:
+            raise ValidationError("A data de conclusão não pode ser anterior à data de criação.")
+
+    def save(self, *args, **kwargs):
+
+        self.full_clean() 
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return self.titulo

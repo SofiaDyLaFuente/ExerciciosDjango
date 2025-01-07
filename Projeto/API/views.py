@@ -5,7 +5,6 @@ from rest_framework import viewsets, mixins
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 
-
 class TarefaViewSet(viewsets.ModelViewSet):
     queryset = Tarefa.objects.all()
     serializer_class = TarefaSerializer

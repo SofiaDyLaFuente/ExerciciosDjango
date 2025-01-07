@@ -1,35 +1,34 @@
 from rest_framework import serializers
 from .models import Tarefa
-from rest_framework.exceptions import ValidationError
 
 class TarefaSerializer(serializers.ModelSerializer):
-
     class Meta:
-    
-        extra_kwargs = {
-                'email': {'write_only':True}
-            }
-        
         model = Tarefa
-        
         fields = (
-                'tipo',
-                'titulo',
-                'data_criacao',
-                'data_conclusao',
-                'descricao',
-                'prioridade',   
+            'tipo',
+            'titulo',
+            'data_criacao',
+            'data_conclusao',
+            'descricao',
+            'prioridade',   
         )
+        extra_kwargs = {
+            'email': {'write_only': True}
 
-    def validate_data_conclusao(self, value):
-        if value:
-            # Verificar se a data de criação foi fornecida e realizar a comparação
-            data_criacao = self.initial_data.get('data_criacao')  # Pega a data de criação do dado de entrada
-            if not data_criacao:
-                raise ValidationError("A data de criação é obrigatória.")
-            
-            if value < data_criacao:
-                raise ValidationError("A data de conclusão não pode ser anterior à data da criação.")
+        }
 
-        return value
+#---------
+
+    def create(self, validated_data):
+        tarefa = Tarefa(**validated_data)
+        tarefa.full_clean()  # Chama a validação global antes de salvar
+        tarefa.save()
+        return tarefa
+
+    def update(self, instance, validated_data):
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.full_clean()  # Chama a validação global antes de atualizar
+        instance.save()
+        return instance
 
