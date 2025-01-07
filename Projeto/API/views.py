@@ -12,7 +12,7 @@ class TarefaViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly] 
     throttle_classes = [UserRateThrottle, AnonRateThrottle]
 
-    def lista(self, request, *args, **kwargs):
+    def list(self, request, *args, **kwargs):
         # Organizar as tarefas por tipo
         tarefas = Tarefa.objects.all()
 
