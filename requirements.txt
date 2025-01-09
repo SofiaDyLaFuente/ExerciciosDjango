@@ -1,0 +1,4 @@
+Django=5.1.4
+djangorestfremework=3.15.2
+markdown=3.7
+django-cors-headers=4.6.0
