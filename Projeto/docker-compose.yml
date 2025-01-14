@@ -1,5 +1,17 @@
 services:
 
+  portainer:
+    image: portainer/portainer-ce:latest  # Definir a imagem corretamente
+    command: -H tcp://host.docker.internal:2375
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  
   db:
     image: postgres:13-alpine
     environment:
@@ -10,6 +22,8 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   projeto:
+    
+    image: imagem-projeto:latest
     build: .  
     volumes:
       - .:/app
