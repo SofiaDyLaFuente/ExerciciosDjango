@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
 
   portainer:
@@ -10,7 +12,7 @@ services:
     deploy:
       replicas: 1
       restart_policy:
-        condition: on-failure
+         condition: on-failure
   
   db:
     image: postgres:13-alpine
@@ -19,14 +21,12 @@ services:
       POSTGRES_USER: Sofia
       POSTGRES_PASSWORD: senha1234
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - portainer_postgres_data:/var/lib/postgresql/data
 
-  projeto:
-    
-    image: imagem-projeto:latest
-    build: .  
+  projeto:   
+    build: .
     volumes:
-      - .:/app
+      - projeto_postgres_data:/app
     ports:
       - "8000:8000"
     depends_on:
@@ -40,6 +40,8 @@ services:
 
   
 volumes:
-  postgres_data:
+  portainer_postgres_data: {}  
+  projeto_postgres_data: {}
+
 
 
