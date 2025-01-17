@@ -25,6 +25,7 @@ services:
 
   projeto:   
     build: .
+    image: imagem_projeto:latest
     volumes:
       - projeto_postgres_data:/app
     ports:
